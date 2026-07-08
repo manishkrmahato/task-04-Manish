@@ -1,123 +1,257 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mumbai Heritage Sites</title>
+
     <style>
-      body {
+      * {
         margin: 0;
         padding: 0;
-        font-family: "Trebuchet MS", Arial, sans-serif;
-        line-height: 1.6;
-        background-color: #f9f9f9;
-        color: #333;
+        box-sizing: border-box;
       }
 
+      body {
+        font-family: "Trebuchet MS", Arial, sans-serif;
+        background: linear-gradient(135deg, #fff8f3, #f7fbff, #eef7ff);
+        color: #333;
+        line-height: 1.6;
+      }
+
+      /* Navbar */
       nav {
         position: sticky;
         top: 0;
-        background-color: #333;
-        padding: 10px 20px;
+        z-index: 1000;
+        padding: 14px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(34, 34, 34, 0.88);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .logo-section {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        z-index: 1000;
+        gap: 12px;
       }
 
       nav img {
-        height: 50px;
-        margin-right: 10px;
+        height: 52px;
+        width: 52px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid #fff;
+      }
+
+      .logo-section h2 {
+        color: #fff;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
       }
 
       nav ul {
         list-style: none;
         display: flex;
-        padding: 0;
-        margin: 0;
+        gap: 12px;
       }
 
-      nav li {
-        margin: 0 10px;
-      }
-
-      nav a {
+      nav ul li a {
         text-decoration: none;
         color: white;
-        padding: 10px 20px;
-        border-radius: 5px;
-        transition: background-color 0.3s;
+        padding: 10px 18px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
       }
 
-      nav a:hover {
-        background-color: #ddd;
-        color: #333;
+      nav ul li a:hover {
+        background: linear-gradient(135deg, #ff6f61, #ff9472);
+        color: white;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 111, 97, 0.35);
       }
 
-      h1 {
+      /* Hero Heading */
+      .hero {
         text-align: center;
-        margin: 30px 0;
-        color: #444;
+        padding: 60px 20px 30px;
       }
 
+      .hero h1 {
+        font-size: 3rem;
+        color: #222;
+        margin-bottom: 12px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.08);
+      }
+
+      .hero p {
+        max-width: 750px;
+        margin: auto;
+        font-size: 1.08rem;
+        color: #555;
+      }
+
+      /* Heritage Grid */
       .heritage-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 20px;
-        margin: 0 auto;
-        padding: 20px;
+        width: 90%;
+        max-width: 1300px;
+        margin: 30px auto 60px;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 28px;
       }
 
+      /* Heritage Card */
       .heritage-item {
-        width: 250px;
-        text-align: center;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        position: relative;
+      }
+
+      .heritage-item:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: 0 18px 35px rgba(0, 0, 0, 0.18);
+      }
+
+      .heritage-item a {
+        text-decoration: none;
+        color: inherit;
+        display: block;
       }
 
       .heritage-item img {
         width: 100%;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        height: 220px;
+        object-fit: cover;
+        transition: transform 0.5s ease;
       }
 
-      .heritage-item a {
-        display: block;
-        margin-top: 10px;
-        text-decoration: none;
-        background-color: #ff6f61;
-        color: white;
-        padding: 10px;
-        border-radius: 5px;
-        font-weight: bold;
-        transition: background-color 0.3s;
+      .heritage-item:hover img {
+        transform: scale(1.08);
       }
 
-      .heritage-item a:hover {
-        background-color: #e65a4c;
-      }
-
-      footer {
-        background-color: #333;
-        color: white;
+      .heritage-content {
+        padding: 18px;
         text-align: center;
-        padding: 10px 0;
-        margin-top: 40px;
+      }
+
+      .heritage-content h3 {
+        font-size: 1.25rem;
+        color: #222;
+        margin-bottom: 10px;
+      }
+
+      .heritage-content p {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 16px;
+      }
+
+      .explore-btn {
+        display: inline-block;
+        padding: 10px 22px;
+        border-radius: 30px;
+        background: linear-gradient(135deg, #ff6f61, #ff9472);
+        color: white;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 6px 14px rgba(255, 111, 97, 0.3);
+      }
+
+      .explore-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(255, 111, 97, 0.45);
+      }
+
+      /* Section title decoration */
+      .section-title {
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 70%;
+        height: 4px;
+        margin: 10px auto 0;
+        border-radius: 50px;
+        background: linear-gradient(90deg, #ff6f61, #ffb199);
+      }
+
+      /* Footer */
+      footer {
+        background: linear-gradient(135deg, #222, #111);
+        color: #ddd;
+        text-align: center;
+        padding: 25px 15px;
+      }
+
+      footer p {
+        margin: 8px 0;
       }
 
       footer a {
-        color: #ffcc00;
+        color: #ffb199;
         text-decoration: none;
+        font-weight: bold;
       }
 
       footer a:hover {
+        color: #ff6f61;
         text-decoration: underline;
+      }
+
+      /* Responsive */
+      @media (max-width: 900px) {
+        nav {
+          flex-direction: column;
+          gap: 15px;
+          padding: 15px;
+        }
+
+        nav ul {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .hero h1 {
+          font-size: 2.3rem;
+        }
+      }
+
+      @media (max-width: 500px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .hero p {
+          font-size: 0.95rem;
+        }
+
+        nav ul li a {
+          padding: 8px 14px;
+          font-size: 0.9rem;
+        }
       }
     </style>
   </head>
 
   <body>
+    <!-- Navbar -->
     <nav>
-      <div style="display: flex; align-items: center">
-        <img src="tourism logo.png" alt="Health~Web Logo" />
-        <h2 style="color: white; margin: 0; font-weight: bold">Tourist~Web</h2>
+      <div class="logo-section">
+        <img src="tourism logo.png" alt="Tourist Web Logo" />
+        <h2>Tourist~Web</h2>
       </div>
+
       <ul>
         <li><a href="tourism.html">Home</a></li>
         <li><a href="heritage.html">Heritage</a></li>
@@ -126,50 +260,97 @@
       </ul>
     </nav>
 
-    <div class="content">
-      <h1>Mumbai Heritage Sites</h1>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 class="section-title">Mumbai Heritage Sites</h1>
+      <p>
+        Explore the timeless beauty of Mumbai’s iconic landmarks — from majestic
+        monuments to spiritual sites and historic architecture that reflect the
+        city’s rich cultural legacy.
+      </p>
+    </section>
 
-      <div class="heritage-list">
-        <div class="heritage-item">
-          <a href="gatewayofindia.html">
-            <img src="Gateway-of-India-Nightview.jpg" alt="Gateway of India" />
-            <p>Gateway of India</p>
-          </a>
-        </div>
+    <!-- Heritage Cards -->
+    <div class="heritage-list">
+      <div class="heritage-item">
+        <a href="gatewayofindia.html">
+          <img src="Gateway-of-India-Nightview.jpg" alt="Gateway of India" />
+          <div class="heritage-content">
+            <h3>Gateway of India</h3>
+            <p>
+              Mumbai’s most famous monument, overlooking the Arabian Sea and
+              symbolizing the city’s colonial history.
+            </p>
+            <span class="explore-btn">Explore More</span>
+          </div>
+        </a>
+      </div>
 
-        <div class="heritage-item">
-          <a href="elephantcaves.html">
-            <img src="caves.png" alt="Elephanta Caves" />
-            <p>Elephanta Caves</p>
-          </a>
-        </div>
+      <div class="heritage-item">
+        <a href="elephantcaves.html">
+          <img src="caves.png" alt="Elephanta Caves" />
+          <div class="heritage-content">
+            <h3>Elephanta Caves</h3>
+            <p>
+              A UNESCO World Heritage Site featuring ancient rock-cut cave
+              temples dedicated to Lord Shiva.
+            </p>
+            <span class="explore-btn">Explore More</span>
+          </div>
+        </a>
+      </div>
 
-        <div class="heritage-item">
-          <a href="chhatrapati.html">
-            <img src="Mumbai-Chhatrapati_Shivaji_Terminus1.jpg" alt="Chhatrapati Shivaji Maharaj Terminus" />
-            <p>Chhatrapati Shivaji Maharaj Terminus</p>
-          </a>
-        </div>
+      <div class="heritage-item">
+        <a href="chhatrapati.html">
+          <img
+            src="Mumbai-Chhatrapati_Shivaji_Terminus1.jpg"
+            alt="Chhatrapati Shivaji Maharaj Terminus"
+          />
+          <div class="heritage-content">
+            <h3>CSM Terminus</h3>
+            <p>
+              A masterpiece of Victorian Gothic architecture and one of Mumbai’s
+              busiest historic railway stations.
+            </p>
+            <span class="explore-btn">Explore More</span>
+          </div>
+        </a>
+      </div>
 
-        <div class="heritage-item">
-          <a href="marine.html">
-            <img src="marinedrive.jfif" alt="Marine Drive" />
-            <p>Marine Drive</p>
-          </a>
-        </div>
+      <div class="heritage-item">
+        <a href="marine.html">
+          <img src="marinedrive.jfif" alt="Marine Drive" />
+          <div class="heritage-content">
+            <h3>Marine Drive</h3>
+            <p>
+              The iconic Queen’s Necklace, known for its beautiful sea-facing
+              promenade and glittering night views.
+            </p>
+            <span class="explore-btn">Explore More</span>
+          </div>
+        </a>
+      </div>
 
-        <div class="heritage-item">
-          <a href="haji.html">
-            <img src="haji.jfif" alt="Haji Ali Dargah" />
-            <p>Haji Ali Dargah</p>
-          </a>
-        </div>
+      <div class="heritage-item">
+        <a href="haji.html">
+          <img src="haji.jfif" alt="Haji Ali Dargah" />
+          <div class="heritage-content">
+            <h3>Haji Ali Dargah</h3>
+            <p>
+              A stunning spiritual landmark located on an islet, blending faith,
+              architecture, and sea views.
+            </p>
+            <span class="explore-btn">Explore More</span>
+          </div>
+        </a>
       </div>
     </div>
 
+    <!-- Footer -->
     <footer>
-      <p>&copy; 2025 Tourist~Web. All Rights Reserved. | Designed with love for Tourist People.</p>
-      <p><a href="tourism.html">Tourist-Web</a></p>
+      <p>&copy; 2025 Tourist~Web. All Rights Reserved.</p>
+      <p>Designed with ❤️ for travel lovers and heritage explorers.</p>
+      <p><a href="tourism.html">Back to Tourist~Web</a></p>
     </footer>
   </body>
 </html>
